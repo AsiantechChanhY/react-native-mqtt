@@ -120,6 +120,7 @@ public class RCTMqtt
         if (params.hasKey("username"))
         {
             defaultOptions.putString("username", params.getString("username"));
+            defaultOptions.putBoolean("auth", true);
         }
         if (params.hasKey("password"))
         {
@@ -216,8 +217,8 @@ public class RCTMqtt
 
         if (options.getBoolean("auth"))
         {
-            String user = options.getString("user");
-            String pass = options.getString("pass");
+            String user = options.getString("username");
+            String pass = options.getString("password");
             if (user.length() > 0)
             {
                 mqttOptions.setUserName(user);
