@@ -240,7 +240,7 @@ public class RCTMqtt
 
         try
         {
-            client = new MqttAsyncClient(uri.toString(), options.getString("clientId"), memPer);
+            client = new MqttAsyncClient(uri.toString(), options.getString("clientid"), memPer);
         }
         catch (MqttException e)
         {
