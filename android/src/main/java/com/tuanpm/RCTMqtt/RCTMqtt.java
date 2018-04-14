@@ -63,12 +63,12 @@ public class RCTMqtt
         defaultOptions.putString("protocol", "tcp");
         defaultOptions.putBoolean("tls", false);
         defaultOptions.putInt("keepalive", 1883);
-        defaultOptions.putString("clientId", "react-native-mqtt");
+        defaultOptions.putString("clientid", "react-native-mqtt");
         defaultOptions.putInt("protocolLevel", 4);
         defaultOptions.putBoolean("clean", true);
         defaultOptions.putBoolean("auth", false);
-        defaultOptions.putString("user", "");
-        defaultOptions.putString("pass", "");
+        defaultOptions.putString("username", "");
+        defaultOptions.putString("password", "");
         defaultOptions.putBoolean("will", false);
         defaultOptions.putInt("protocolLevel", 4);
         defaultOptions.putString("willMsg", "");
@@ -101,9 +101,9 @@ public class RCTMqtt
         {
             defaultOptions.putInt("keepalive", params.getInt("keepalive"));
         }
-        if (params.hasKey("clientId"))
+        if (params.hasKey("clientid"))
         {
-            defaultOptions.putString("clientId", params.getString("clientId"));
+            defaultOptions.putString("clientid", params.getString("clientid"));
         }
         if (params.hasKey("protocolLevel"))
         {
@@ -117,13 +117,13 @@ public class RCTMqtt
         {
             defaultOptions.putBoolean("auth", params.getBoolean("auth"));
         }
-        if (params.hasKey("user"))
+        if (params.hasKey("username"))
         {
-            defaultOptions.putString("user", params.getString("user"));
+            defaultOptions.putString("username", params.getString("username"));
         }
-        if (params.hasKey("pass"))
+        if (params.hasKey("password"))
         {
-            defaultOptions.putString("pass", params.getString("pass"));
+            defaultOptions.putString("password", params.getString("password"));
         }
         if (params.hasKey("will"))
         {
