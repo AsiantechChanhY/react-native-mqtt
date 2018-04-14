@@ -24,8 +24,7 @@ public class RCTMqttPackage
 
         return modules;
     }
-
-    @Override
+    
     public List<Class<? extends JavaScriptModule>> createJSModules()
     {
         return Collections.emptyList();
