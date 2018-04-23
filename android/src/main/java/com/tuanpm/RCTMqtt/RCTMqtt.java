@@ -39,8 +39,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
 
 
-public class RCTMqtt
-        implements MqttCallback
+public class RCTMqtt implements MqttCallback
 {
     private static final String TAG = "RCTMqttModule";
     private final ReactApplicationContext reactContext;
@@ -63,12 +62,12 @@ public class RCTMqtt
         defaultOptions.putString("protocol", "tcp");
         defaultOptions.putBoolean("tls", false);
         defaultOptions.putInt("keepalive", 1883);
-        defaultOptions.putString("clientid", "react-native-mqtt");
+        defaultOptions.putString("clientId", "react-native-mqtt");
         defaultOptions.putInt("protocolLevel", 4);
         defaultOptions.putBoolean("clean", true);
         defaultOptions.putBoolean("auth", false);
-        defaultOptions.putString("username", "");
-        defaultOptions.putString("password", "");
+        defaultOptions.putString("user", "");
+        defaultOptions.putString("pass", "");
         defaultOptions.putBoolean("will", false);
         defaultOptions.putInt("protocolLevel", 4);
         defaultOptions.putString("willMsg", "");
@@ -103,7 +102,7 @@ public class RCTMqtt
         }
         if (params.hasKey("clientid"))
         {
-            defaultOptions.putString("clientid", params.getString("clientid"));
+            defaultOptions.putString("clientId", params.getString("clientId"));
         }
         if (params.hasKey("protocolLevel"))
         {
@@ -117,14 +116,14 @@ public class RCTMqtt
         {
             defaultOptions.putBoolean("auth", params.getBoolean("auth"));
         }
-        if (params.hasKey("username"))
+        if (params.hasKey("user"))
         {
-            defaultOptions.putString("username", params.getString("username"));
+            defaultOptions.putString("user", params.getString("user"));
             defaultOptions.putBoolean("auth", true);
         }
-        if (params.hasKey("password"))
+        if (params.hasKey("pass"))
         {
-            defaultOptions.putString("password", params.getString("password"));
+            defaultOptions.putString("pass", params.getString("pass"));
         }
         if (params.hasKey("will"))
         {
@@ -166,6 +165,8 @@ public class RCTMqtt
         if (options.getInt("protocolLevel") == 3)
         {
             mqttOptions.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1);
+        } else {
+            mqttOptions.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1_1);
         }
 
         mqttOptions.setKeepAliveInterval(options.getInt("keepalive"));
@@ -178,7 +179,7 @@ public class RCTMqtt
             {
                 /*
         			http://stackoverflow.com/questions/3761737/https-get-ssl-with-android-and-self-signed-server-certificate
-        
+
         			WARNING: for anybody else arriving at this answer, this is a dirty,
         			horrible hack and you must not use it for anything that matters.
         			SSL/TLS without authentication is worse than no encryption at all -
@@ -217,8 +218,8 @@ public class RCTMqtt
 
         if (options.getBoolean("auth"))
         {
-            String user = options.getString("username");
-            String pass = options.getString("password");
+            String user = options.getString("user");
+            String pass = options.getString("pass");
             if (user.length() > 0)
             {
                 mqttOptions.setUserName(user);
@@ -240,7 +241,7 @@ public class RCTMqtt
 
         try
         {
-            client = new MqttAsyncClient(uri.toString(), options.getString("clientid"), memPer);
+            client = new MqttAsyncClient(uri.toString(), options.getString("clientId"), memPer);
         }
         catch (MqttException e)
         {
