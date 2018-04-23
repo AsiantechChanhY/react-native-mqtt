@@ -100,7 +100,7 @@ public class RCTMqtt implements MqttCallback
         {
             defaultOptions.putInt("keepalive", params.getInt("keepalive"));
         }
-        if (params.hasKey("clientid"))
+        if (params.hasKey("clientId"))
         {
             defaultOptions.putString("clientId", params.getString("clientId"));
         }
