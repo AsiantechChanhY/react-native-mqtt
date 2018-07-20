@@ -64,7 +64,7 @@ public class RCTMqtt implements MqttCallback
         defaultOptions.putInt("keepalive", 1883);
         defaultOptions.putString("clientId", "react-native-mqtt");
         defaultOptions.putInt("protocolLevel", 4);
-        defaultOptions.putBoolean("clean", true);
+        defaultOptions.putBoolean("clean", false);
         defaultOptions.putBoolean("auth", false);
         defaultOptions.putString("user", "");
         defaultOptions.putString("pass", "");
