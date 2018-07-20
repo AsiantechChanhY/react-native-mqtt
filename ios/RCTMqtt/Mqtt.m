@@ -32,7 +32,7 @@
                                 @"keepalive": @120, //second
                                 @"clientId" : @"react-native-mqtt",
                                 @"protocolLevel": @4,
-                                @"clean": @YES,
+                                @"clean": @NO,
                                 @"auth": @NO,
                                 @"user": @"",
                                 @"pass": @"",
